@@ -1,36 +1,29 @@
- 
+
 
 import '@babel/polyfill';
-// import { displayMap } from './mapbox';
-import { login,logout } from './login';
-import {updateSettings} from './updateSettings';
-import {bookTour} from './stripe';
+import { login, logout } from './login';
+import { updateSettings } from './updateSettings';
+import { bookTour } from './stripe';
 
-const mapbox= document.getElementById('map');
-const loginform =  document.querySelector('.form--login');
+const mapbox = document.getElementById('map');
+const loginform = document.querySelector('.form--login');
 const logoutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookData = document.getElementById('book-tour');
 
-// if(mapbox){
-//     const location = JSON.parse(mapbox.dataset.location);
-//     displayMap(location);
-// }
 
-
-
-if(loginform){
-    loginform.addEventListener('submit', e => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        console.log(email)
-        login(email, password);
-    })    
+if (loginform) {
+  loginform.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    console.log(email)
+    login(email, password);
+  })
 }
 
-if(logoutBtn) logoutBtn.addEventListener('click',logout);
+if (logoutBtn) logoutBtn.addEventListener('click', logout);
 
 if (userDataForm)
   userDataForm.addEventListener('submit', e => {
@@ -40,12 +33,12 @@ if (userDataForm)
     form.append('email', document.getElementById('email').value)
     form.append('photo', document.getElementById('photo').files[0])
     console.log(form);
-    
-    updateSettings(form,'data')
+
+    updateSettings(form, 'data')
   });
 
 
-  if (userPasswordForm)
+if (userPasswordForm)
   userPasswordForm.addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -54,23 +47,23 @@ if (userDataForm)
     const passwordCurrent = document.getElementById('password-current').value;
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('password-confirm').value;
-  
-   await updateSettings({passwordCurrent,password,passwordConfirm},'password');
 
-   document.querySelector('.btn--save-password').textContent = 'Save password';
+    await updateSettings({ passwordCurrent, password, passwordConfirm }, 'password');
 
-     document.getElementById('password-current').value = ''
-     document.getElementById('password').value = ''
-     document.getElementById('password-confirm').value = ''
-    
+    document.querySelector('.btn--save-password').textContent = 'Save password';
+
+    document.getElementById('password-current').value = ''
+    document.getElementById('password').value = ''
+    document.getElementById('password-confirm').value = ''
+
   });
 
 
 
-  if(bookData){
-    bookData.addEventListener('click',e=>{
-      e.target.textContent = 'Processing...'
-      const {tourId} = e.target.dataset;
-      bookTour(tourId);
-    })
-  }
+if (bookData) {
+  bookData.addEventListener('click', e => {
+    e.target.textContent = 'Processing...'
+    const { tourId } = e.target.dataset;
+    bookTour(tourId);
+  })
+}

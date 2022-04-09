@@ -1,5 +1,3 @@
-/*eslint-disable*/
-
 
 export const hidealert = ()=>{
     const el = document.querySelector('.alert');

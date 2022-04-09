@@ -8774,7 +8774,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.hidealert = exports.Showalert = void 0;
 
-/*eslint-disable*/
 var hidealert = function hidealert() {
   var el = document.querySelector('.alert');
   if (el) el.parentElement.removeChild(el);
@@ -8981,7 +8980,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-// const stripe = Stripe('pk_test_51Kfh4lSFIr8mLSlWRAzRvsKnrjl8gq1NclHQbCj3TFj946sNPVfcGk2w5M8xFEMtQZ7twTKvyPcdEzHFuVdr1IKi00UQQqzI1q')
 var bookTour = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(tourId) {
     var session;
@@ -9308,10 +9306,7 @@ var loginform = document.querySelector('.form--login');
 var logoutBtn = document.querySelector('.nav__el--logout');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
-var bookData = document.getElementById('book-tour'); // if(mapbox){
-//     const location = JSON.parse(mapbox.dataset.location);
-//     displayMap(location);
-// }
+var bookData = document.getElementById('book-tour');
 
 if (loginform) {
   loginform.addEventListener('submit', function (e) {
@@ -9406,7 +9401,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8825" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9012" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

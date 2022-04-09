@@ -6,16 +6,15 @@ const Tour = require('./../models/tourModel');
 const Booking = require('../models/bookingModel');
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
-    // 1) Get the currently booked tour
-    const tour = await Tour.findById(req.params.tourid);
-    console.log(tour);
+  // 1) Get the currently booked tour
+  const tour = await Tour.findById(req.params.tourid);
+  console.log(tour);
 
-//2)Create Checkout Session
-const session = await stripe.checkout.sessions.create({
+  //2)Create Checkout Session
+  const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
-    success_url: `${req.protocol}://${req.get('host')}/?tour=${
-      req.params.tourid
-    }&user=${req.user.id}&price=${tour.price}`,
+    success_url: `${req.protocol}://${req.get('host')}/?tour=${req.params.tourid
+      }&user=${req.user.id}&price=${tour.price}`,
     cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slug}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourId,
@@ -31,8 +30,8 @@ const session = await stripe.checkout.sessions.create({
     ]
   });
 
-//3)Create Session as response
-res.status(200).json({
+  //3)Create Session as response
+  res.status(200).json({
     status: 'success',
     session
   });
@@ -45,8 +44,8 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
   const { tour, user, price } = req.query;
 
   if (!tour && !user && !price) return next();
-  
-  await Booking.create( {tour, user, price} ); 
+
+  await Booking.create({ tour, user, price });
 
   res.redirect(req.originalUrl.split('?')[0]);
   // res.redirect(`${req.protocol}://${req.get('host')}/`);
