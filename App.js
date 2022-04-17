@@ -5,6 +5,7 @@ const ratelimiter = require('express-rate-limit');
 const hpp = require('hpp');
 const path = require('path');
 const cors = require('cors');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -34,13 +35,15 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 
+app.use(compression());
 
+ 
 //cors preflight
 app.use(cors({
   origin: "http://localhost:3000",
   credentials: true,
   method: ["GET", "POST"]
-}))
+})) 
 
 
 const limiter = ratelimiter({

@@ -3,7 +3,10 @@ include _reviewCard
 
 block append head
 
+  
 
+  script(src='https://api.mapbox.com/mapbox-gl-js/v2.8.0/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v2.8.0/mapbox-gl.css' rel='stylesheet')
   script(src='https://js.stripe.com/v3/')
   script(type='text/javascript').
    const stripe = Stripe('pk_test_51Kfh4lSFIr8mLSlWRAzRvsKnrjl8gq1NclHQbCj3TFj946sNPVfcGk2w5M8xFEMtQZ7twTKvyPcdEzHFuVdr1IKi00UQQqzI1q')

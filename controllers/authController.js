@@ -22,8 +22,8 @@ const createSendToken = (user, statusCode, res) => {
     httpOnly: true
   };
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-
-  console.log('Cookies')
+ 
+  // console.log('Cookies')
   res.cookie('jwt', token, cookieOptions);
 
   // Remove password from output
@@ -52,7 +52,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     role: req.body.role
   });
   const url = `http://localhost:3000/me`;
-  console.log(url);
+  // console.log(url);
   await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 200, res);
 
@@ -132,7 +132,6 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 
 ///////////////////// ISLOGGEDIN //////////////////////////////////////////////
-
 // Only for rendered pages, no errors!
 exports.isLoggedIn = async (req, res, next) => {
   if (req.cookies.jwt) {

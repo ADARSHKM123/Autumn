@@ -3,7 +3,7 @@
 import '@babel/polyfill';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
-import { bookTour } from './stripe';
+import { bookTour } from './stripe';  
 
 const mapbox = document.getElementById('map');
 const loginform = document.querySelector('.form--login');
@@ -18,7 +18,7 @@ if (loginform) {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    console.log(email)
+    // console.log(email)
     login(email, password);
   })
 }
@@ -32,7 +32,7 @@ if (userDataForm)
     form.append('name', document.getElementById('name').value)
     form.append('email', document.getElementById('email').value)
     form.append('photo', document.getElementById('photo').files[0])
-    console.log(form);
+    // console.log(form);
 
     updateSettings(form, 'data')
   });
